@@ -20,5 +20,11 @@ RSpec.describe Person, type: :model do
     end
   end
 
-  describe 'Scope' do end
+  describe 'Scope' do 
+    before(:each) do
+      Person.new(last_name: 'Last', first_name: 'First', email: 'sample@example.com').save
+      Person.new(last_name: 'Last', first_name: 'First', email: 'sample@example.com').save
+      Person.new(last_name: 'Last', first_name: 'First', email: 'sample@example.com', active: false).save
+    end
+  end
 end
