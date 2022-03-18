@@ -21,10 +21,19 @@ RSpec.describe Person, type: :model do
   end
 
   describe 'Scope' do 
+    let (:params) { {last_name: 'Last', first_name: 'First', email: 'sample@example.com'} }
     before(:each) do
-      Person.new(last_name: 'Last', first_name: 'First', email: 'sample@example.com').save
-      Person.new(last_name: 'Last', first_name: 'First', email: 'sample@example.com').save
-      Person.new(last_name: 'Last', first_name: 'First', email: 'sample@example.com', active: false).save
+      Person.new(params).save
+      Person.new(params).save
+      Person.new(params.merge(active: false)).save
+    end
+
+    it "should return active people" do
+      expect(Person.active_people.size).to eq(2)
+    end
+
+    it "should return inactive people" do
+      expect(Person.inactive_people.size).to eq(1)
     end
   end
 end
