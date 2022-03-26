@@ -1,0 +1,55 @@
+<%= form_with(model: book) do |form| %>
+  <% if book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+        <% book.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :author %>
+    <%= form.text_field :author %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year_published %>
+    <%= form.number_field :year_published %>
+  </div>
+
+  <div class="field">
+    <%= form.label :number_of_pages %>
+    <%= form.number_field :number_of_pages %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rating %>
+    <%= form.number_field :rating %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+/* if the object does NOT have an ID */
+    /* form_with will use a POST verb and action path will be /books (the plural) */
+    /* form_with will start out empty */
+    /* submit buttonwill say "Create Book" unless changed */
+    /* the action methond we need to process the form data will be called 'create' */
+  
+/* if the object has an ID */
+    /* form_with will use a PUT verb and the action path will be /books/:id */
+    /* the form will prepopulate the fields with data from the database */
+    /* the submit button will say 'Update Book' */
+    /* the action method we need to process the form data will be called 'update' */

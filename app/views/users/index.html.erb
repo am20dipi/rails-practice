@@ -1,1 +1,9 @@
-<h1>Hello World</h1>
+<h1>List of Users</h1>
+
+<% @users.each do |user| %>
+   <p><%= user.name %></p>
+   <p><%= user.email %></p>
+   <p><%= user.city %></p>
+   <p><%= user.age %></p>
+
+<% end %>
